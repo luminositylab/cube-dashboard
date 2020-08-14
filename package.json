@@ -8,6 +8,7 @@
   "dependencies": {
     "@cubejs-backend/mysql-driver": "^0.19.60",
     "@cubejs-backend/postgres-driver": "^0.19.56",
-    "@cubejs-backend/server": "^0.19.59"
+    "@cubejs-backend/server": "^0.19.59",
+    "styled-components": "^5.1.1"
   }
 }
