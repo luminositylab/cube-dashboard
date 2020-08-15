@@ -1,5 +1,5 @@
 import React from 'react';
-import { Spin, Button, Alert, Typography } from 'antd';
+import { Spin, Button, Alert } from 'antd';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { Icon } from '@ant-design/compatible';
@@ -7,7 +7,6 @@ import { GET_DASHBOARD_ITEMS } from '../graphql/queries';
 import ChartRenderer from '../components/ChartRenderer';
 import Dashboard from '../components/Dashboard';
 import DashboardItem from '../components/DashboardItem';
-import PageHeader from '../components/PageHeader';
 
 const deserializeItem = (i) => ({
   ...i,
@@ -66,22 +65,13 @@ const DashboardPage = () => {
   );
 
   return !data || data.dashboardItems.length ? (
-    <div>
-          <PageHeader
-            title={<Typography.Title level={4}>Dashboard</Typography.Title>}
-            button={<Link to="/explore">
-              <Button type="primary">
-                Add chart
-              </Button>
-            </Link>}
-          />
-          <Dashboard dashboardItems={data && data.listDashboardItems.items}>
-            {data && data.listDashboardItems.items.map(deserializeItem).map(dashboardItem)}
-          </Dashboard>
-        </div>
+    <Dashboard dashboardItems={data && data.dashboardItems}>
+      {data && data.dashboardItems.map(deserializeItem).map(dashboardItem)}
+    </Dashboard>
   ) : (
     <Empty />
   );
 };
 
 export default DashboardPage;
+
