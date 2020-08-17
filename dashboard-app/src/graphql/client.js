@@ -64,8 +64,12 @@ const schema = makeExecutableSchema({
     Mutation: {
       createDashboardItem: (_, { input: { ...item } }) => {
         const dashboardItems = getDashboardItems();
+        console.log(item)
+        
         item = { ...item, id: nextId(), layout: JSON.stringify({}) };
+        console.log(item)
         dashboardItems.push(item);
+        console.log(dashboardItems)
         setDashboardItems(dashboardItems);
         return toApolloItem(item);
       },
